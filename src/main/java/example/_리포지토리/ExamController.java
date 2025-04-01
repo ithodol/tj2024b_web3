@@ -36,4 +36,10 @@ public class ExamController {
     }
 
     // 삭제
+    @DeleteMapping
+    public boolean delete(@RequestParam String id){
+        boolean result = examService.delete(id);
+        return result;
+    }
+
 }

@@ -60,4 +60,13 @@ public class ExamService {
         }
         return false;
     }
+
+
+    // 삭제
+    public boolean delete(String id) {
+        examEntityRepository.deleteById(id);
+        System.out.println(examEntityRepository.count());
+        System.out.println(examEntityRepository.existsById(id));
+        return true;
+    }
 }

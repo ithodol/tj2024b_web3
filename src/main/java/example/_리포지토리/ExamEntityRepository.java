@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository // 스프링 컨테이너에 빈 등록
 public interface ExamEntityRepository
         extends JpaRepository<ExamEntity, String> {
+
+
 }
 
 
@@ -27,6 +29,17 @@ public interface ExamEntityRepository
 // 3. .findById(조회할 pk값);
 //      pk값과 일치하는 엔티티를 select 한다
 //      반환값 : Optional<엔티티>
+
+// 4. .deleteById(삭제할 pk값)
+//      pk값과 일치하는 엔티티를 delete 한다
+//      반환값 : void(없다)
+
+// 5. .count()
+//      레코드(엔티티) 전체 개수 반환
+//      반환값 : long
+
+// 6. .existsById(조회할pk값)
+//      pk값과 일치하는 엔티티가 존재하면 true, 아니면 false
 
 // Optional 클래스 : null 관련된 메소드를 제공하는 클래스
 // -> nullPointerException 방지하고자 객체를 포장하는 클래스
