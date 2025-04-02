@@ -1,11 +1,8 @@
-package example._리포지토리;
+package example.day01._리포지토리;
 
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.parser.Entity;
-import java.beans.PropertyEditorSupport;
 import java.util.List;
 
 @RestController
