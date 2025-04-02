@@ -1,4 +1,4 @@
-package example._과제;
+package example.day01._과제;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -11,27 +11,28 @@ import java.time.LocalDate;
 public class TaskEntity {
     // 도서 ID
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     // 도서명
-    @Column
+    @Column(nullable = false, length = 100)
     private String title;
 
 
     // 저자
-    @Column
+    @Column(nullable = false, length = 30)
     private String author;
 
 
     // 출판사
-    @Column
+    @Column(nullable = false, length = 50)
     private String publisher;
 
 
 
     // 출판연도
-    @Column(nullable = false)
-    private LocalDate date;
+    @Column
+    private int date;
 
 
 }
