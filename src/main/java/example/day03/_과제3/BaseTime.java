@@ -13,9 +13,11 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 public class BaseTime {
+    // 생성 날짜시간
     @CreatedDate
     private LocalDateTime createDateTime;
 
+    // 수정 날짜시간
     @LastModifiedDate
     private LocalDateTime updateDateTime;
 }
