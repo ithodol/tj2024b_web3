@@ -1,4 +1,9 @@
 package example.day02.day03._과제3;
 
-public interface CourceRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CourceRepository
+        extends JpaRepository<CourceEntity, Integer> {
 }
