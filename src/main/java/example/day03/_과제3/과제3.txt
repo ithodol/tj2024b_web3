@@ -12,3 +12,4 @@ JPA 연관관계 과제3 : 과정 별 수강생 CRUD
     4. 특정 과정에 수강생 전체 조회
     
 제출 : 카톡방에 GIT주소 제출
+https://docs.google.com/spreadsheets/d/1_TXFjcSP8rzWyVxeZIN02tYbZO0bZDsttkIMXplBBVE/edit?gid=0#gid=0
