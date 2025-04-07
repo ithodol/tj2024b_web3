@@ -4,6 +4,9 @@ import example.day04.model.Repository.TodoRepository;
 import example.day04.model.dto.TodoDto;
 import example.day04.model.entity.TodoEntity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -131,4 +134,40 @@ public class TodoService {
 //                .orElse(false);
     }
 
-}
+    // 6. 전체 조회 + 페이징처리
+    public List<TodoDto> todoFindByPage(int page, int size){
+        // page : 현재 조회 중인 페이지 번호
+        // size : 페이지 1개당 조회할 자료의 개수
+        // (1) PageRequest 클래스
+            // PageRequest.of(조회할 페이지 번호, 자료의 개수, 정렬(선택사항))
+                // 조회할 페이지 번호 : 1페이지 = 0부터 시작 -> -1 적용
+        
+            // Sort.by : 정렬
+                // Sort.by(Sort.Direction.ASC, 필드명) : 오름차순
+                // Sort.by(Sort.Direction.DESC, 필드명) : 내림차순(최신순)
+        PageRequest pageRequest = PageRequest.of(page -1, size, Sort.by(Sort.Direction.DESC, "id"));
+        // ============================== [방법1] 일반적인 ==============================
+        // (2) pageRequest 객체를 findXXX 에 매개변수로 대입한다 / .findAll(페이징객체); 반환타입 : page 타입 (List 타입과 유사함)
+        Page<TodoEntity> todoEntityPage = todoRepository.findAll(pageRequest);
+                    System.out.println("todoEntityPage = " + todoEntityPage);
+                    System.out.println("전체 페이지 수 반환 : " + todoEntityPage.getTotalPages()); // .getTotalPages() : 전체 페이지 수 반환
+                    System.out.println("전체 게시물수 반환 : " + todoEntityPage.getTotalElements()); // .getTotalElements() : 전체 게시물수 반환
+                    System.out.println(todoEntityPage.getContent()); // .getContent() : 조회된 자료의 Page 타입 -> List 타입 변환
+
+        // (3) page 타입의 entity -> dto 변환
+        List<TodoDto> todoDtoList = new ArrayList<>();
+        for(int index = 0; index < todoEntityPage.getContent().size(); index++){
+            TodoDto todoDto = todoEntityPage.getContent().get(index).toDto();
+            todoDtoList.add(todoDto);
+        }
+        return todoDtoList;
+
+
+        // ============================== [방법2] stream ==============================
+//        return todoRepository.findAll(pageRequest).stream()
+//               .map(TodoEntity :: toDto)
+//               .collect(Collectors.toList());
+    }
+
+
+} // class end
