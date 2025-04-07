@@ -52,6 +52,18 @@ public class TodoController {
         return todoService.todoFindByPage(page, size);
     }
 
+    // 7. 제목 검색 조회1 ( 입력한 값이 *일치* 한 제목 조회 )
+    // http://localhost:8080/day04/todos/search1?title=운동하기
+    @GetMapping("/search1")
+    public List<TodoDto> search1( @RequestParam String title ){
+        return todoService.search1( title );
+    }
+    // 8. 제목 검색 조회2 ( 입력한 값이 *포함* 된 제목 조회 )
+    // http://localhost:8080/day04/todos/search2?keyword=운동
+    @GetMapping("/search2")
+    public List<TodoDto> search2( @RequestParam String keyword ){
+        return todoService.search2( keyword );
+    }
 
 
 

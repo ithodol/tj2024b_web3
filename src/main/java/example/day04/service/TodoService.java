@@ -169,5 +169,29 @@ public class TodoService {
 //               .collect(Collectors.toList());
     }
 
+    // 7. 제목 검색 조회1 ( 입력한 값이 *일치* 한 제목 조회 )
+    public List<TodoDto> search1( String title ){
+        // [1 쿼리메소드 ]. JPA 리포지토리에서 내가 만든 추상메소드 사용한다.
+//        return todoRepository.findByTitle( title )
+//                .stream().map( TodoEntity::toDto )
+//                .collect( Collectors.toList() );
+        // [2 네이티브쿼리 ] JPA 리포지토리에서 내가 만든 추상메소드 사용한다.
+        return todoRepository.findByTitleNative( title )
+                .stream().map( TodoEntity::toDto )
+                .collect( Collectors.toList() );
+    } // f end
+
+    // 8. 제목 검색 조회2 ( 입력한 값이 *포함* 된 제목 조회 )
+    public List<TodoDto> search2( String title ){
+        // [1 쿼리메소드 ]. JPA 리포지토리에서 내가 만든 추상메소드 사용한다.
+//        return todoRepository.findByTitleContaining( title )
+//                .stream().map( TodoEntity::toDto )
+//                .collect( Collectors.toList() );
+        // [2 네이티브쿼리 ] JPA 리포지토리에서 내가 만든 추상메소드 사용한다.
+        return todoRepository.findByTitleNativeSearch( title )
+                .stream().map( TodoEntity::toDto )
+                .collect( Collectors.toList() );
+    }
+
 
 } // class end
