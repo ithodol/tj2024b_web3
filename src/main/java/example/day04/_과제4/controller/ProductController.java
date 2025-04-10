@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/day04/products")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class ProductController {
     private final ProductService productService;
 
