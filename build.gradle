@@ -35,8 +35,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     // 비크립트
-    implementation 'org.springframework.security:spring-security-crypto'
-    // 이러면 BCryptPasswordEncoder만 쓸 수 있고, 보안 필터나 로그인 같은 건 아예 작동하지 않음
+    implementation 'org.springframework.security:spring-security-crypto:6.4.3'
+
 
 }
 
