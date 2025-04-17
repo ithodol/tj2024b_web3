@@ -17,31 +17,44 @@ public class MemberController {
     private final MemberService memberService;
 
 
-    // 회원가입
+    // [1] 회원가입
     @PostMapping("/signup")
     public boolean signup(@RequestBody MemberDto memberDto){
         return memberService.signup(memberDto);
     }
 
 
-    // 로그인
+    // [2] 로그인
     @PostMapping("/login")
     public String login(@RequestBody MemberDto memberDto){
         return memberService.login(memberDto);
     }
 
 
-    // 로그인된 회원 검증 / 내 정보 조회
-    @GetMapping("/info")
+    // [3] 로그인된 회원 검증 / 내정보 조회
     // @RequestHeader : HTTP 헤더 정보를 매핑하는 어노테이션 JWT 정보는 HTTP 헤더에 담을 수 있다
     // Authorization : 인증 속성, {Authorization : token값}
     // @RequestParam : HTTP 헤더의 경로 쿼리스트링 매핑하는 어노테이션
     // @RequestBody : HTTP 본문의 객체를 매핑하는 어노테이션
     // @PathVariable : HTTP 헤더의 경로 값 매핑하는 어노테이션
     // header : {'Authorization : 'yJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDQ3NzI5NTksImV4cCI6MzE3NDQzMTA4NjQ5OTU4N30.EmbdY71TV66hRLr6yP5VMaFBCDjDEI9JcFtLtH59LjY'}
+    @GetMapping("/info")
     public MemberDto info(@RequestHeader("Authorization") String token){
         System.out.println("token : " + token);
         return memberService.info(token);
+    }
+
+    // [4] 로그아웃 , 로그아웃 할 토큰 가져오기.
+    @GetMapping("/logout")
+    public void logout(
+            @RequestHeader("Authorization") String token ) {
+        memberService.logout( token );
+    }
+
+    // [5] 실시간 최근 24시간내 로그인 한 접속자 수
+    @GetMapping("/login/count")
+    public int loginCount(){
+        return memberService.loginCount();
     }
 
 }
