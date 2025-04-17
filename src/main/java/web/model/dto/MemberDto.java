@@ -27,6 +27,5 @@ public class MemberDto {
                 .mpwd(this.mpwd)
                 .mname(this.mname)
                 .build();
-
     }
 }

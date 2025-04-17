@@ -25,7 +25,6 @@ public class MemberEntity extends BaseTime {
         return MemberDto.builder()
                 .mno(this.mno)
                 .memail(this.memail)
-                .mpwd(this.mpwd)
                 .mname(this.mname)
                 .createDateTime(this.getCreateDateTime())
                 .build();

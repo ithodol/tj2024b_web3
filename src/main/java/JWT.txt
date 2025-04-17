@@ -1,0 +1,2 @@
+[ JWT ] JSON WEB TOKEN(징표)
+1. 정의 :
