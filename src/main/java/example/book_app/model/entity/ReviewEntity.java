@@ -7,7 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
+
 
 @Entity
 @Table(name = "review")
@@ -22,11 +23,17 @@ public class ReviewEntity extends BaseTime{
     private String rcontent;
     private String rpassword;
 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id")
+    private BookEntity book;
+
     public ReviewDto toDto(){
         return ReviewDto.builder()
                 .rid(this.rid)
                 .rcontent(this.rcontent)
                 .rpassword(this.rpassword)
+                .id(book.getId())
                 .createDateTime(this.getCreateDateTime())
                 .build();
     }

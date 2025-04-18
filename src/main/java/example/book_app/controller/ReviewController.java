@@ -15,18 +15,18 @@ import java.util.List;
 public class ReviewController {
     private final ReviewService reviewService;
 
-//    @PostMapping
-//    public ReviewDto rCreate(@RequestBody ReviewDto reviewDto){
-//        return reviewService.rCreate(reviewDto);
-//    }
-//
-//    @GetMapping
-//    public List<ReviewDto> rFindAll(){
-//        return reviewService.rFindAll();
-//    }
-//
-//    @DeleteMapping
-//    public boolean rDelete(@RequestParam int id, @RequestParam String rpassword){
-//        return reviewService.rDelete(id, rpassword);
-//    }
+    @PostMapping
+    public ReviewDto rCreate(@RequestBody ReviewDto reviewDto){
+        return reviewService.rCreate(reviewDto);
+    }
+
+    @GetMapping
+    public List<ReviewDto> rFindById(@RequestParam int id){
+        return reviewService.rFindById(id);
+    }
+
+    @DeleteMapping
+    public boolean rDelete(@RequestParam int id){
+        return reviewService.rDelete(id);
+    }
 }

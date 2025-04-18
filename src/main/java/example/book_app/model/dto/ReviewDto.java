@@ -18,13 +18,15 @@ public class ReviewDto {
     private String rcontent;
     private String rpassword;
 
+    private int id; // book id
     private LocalDateTime createDateTime;
 
-    public ReviewEntity toEntity(){
+    public ReviewEntity toEntity(BookEntity book){
         return ReviewEntity.builder()
                 .rid(this.rid)
                 .rcontent(this.rcontent)
                 .rpassword(this.rpassword)
+                .book(book)
                 .build();
     }
 }
