@@ -2,8 +2,11 @@ package example.book_app.controller;
 
 import example.book_app.model.dto.BookDto;
 import example.book_app.model.dto.ReviewDto;
+import example.book_app.model.entity.BookEntity;
+import example.book_app.model.entity.ReviewEntity;
 import example.book_app.service.ReviewService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +29,7 @@ public class ReviewController {
     }
 
     @DeleteMapping
-    public boolean rDelete(@RequestParam int id){
-        return reviewService.rDelete(id);
+    public boolean rDelete(@RequestParam int id, @RequestParam int rid, @RequestParam String rpassword){
+        return reviewService.rDelete(id, rid, rpassword);
     }
 }
