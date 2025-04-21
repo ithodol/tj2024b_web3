@@ -12,6 +12,7 @@ import web.model.repository.MemberRepository;
 import web.util.JwtUtil;
 
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 @Service // Spring MVC2 service
 @RequiredArgsConstructor
@@ -62,6 +63,9 @@ public class MemberService {
         // 5. 비밀번호 검증 성공하면 / 세션 할당 or 토큰 할당
         String token = jwtUtil.createToken(memberEntity.getMemail());
         System.out.println("발급된 토큰 : " + token);
+        // + 레디스에 실시간 24시간만 저장되는 로그인 로그(기록) 하기.
+        stringRedisTemplate.opsForValue().set(
+                "RECENT_LOGIN:"+memberEntity.getMemail() , "true" , 1 , TimeUnit.DAYS );
         return token;
     }
 
