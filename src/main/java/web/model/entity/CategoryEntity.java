@@ -6,15 +6,9 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "category") // 테이블 생성과 매핑
-@Getter
-@Setter
-@Builder
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor // 롬복
-public class CategoryEntity {
+@Entity@Table(name = "category") // 테이블 생성과 매핑
+@Getter@Setter@Builder@ToString@NoArgsConstructor@AllArgsConstructor // 롬복
+public class CategoryEntity extends BaseTime {
     @Id // preimary key
     @GeneratedValue( strategy = GenerationType.IDENTITY ) // auto_increment
     private long cno; // 카테고리 식별번호
@@ -28,3 +22,15 @@ public class CategoryEntity {
     private List<ProductEntity> productEntityList = new ArrayList<>();
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,8 +9,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
+@MappedSuperclass // 해당 클래스는 일반 엔티티가 아닌 상속(공통부문) 엔티티 용도
+@EntityListeners(AuditingEntityListener.class) // 해당 클래스를 JPA 감사 활성화
 @Getter
 public class BaseTime {
     // 생성 날짜시간

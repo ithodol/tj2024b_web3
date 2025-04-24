@@ -5,7 +5,7 @@ import lombok.*;
 
 @Entity@Table(name = "img")
 @Getter @Setter @Builder @ToString @NoArgsConstructor @AllArgsConstructor // 롬복
-public class ImgEntity {
+public class ImgEntity extends BaseTime {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private long ino ; // 이미지 식별번호
@@ -18,3 +18,12 @@ public class ImgEntity {
     private ProductEntity productEntity;
 
 }
+
+
+
+
+
+
+
+
+
