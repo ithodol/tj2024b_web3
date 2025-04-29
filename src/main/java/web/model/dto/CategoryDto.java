@@ -14,13 +14,14 @@ public class CategoryDto {
 
     // * toDto ; 주로 조회 용도
     public static CategoryDto
-    toDto( CategoryEntity categoryEntity ){
+        toDto( CategoryEntity categoryEntity ){
         return CategoryDto.builder()
                 .cno( categoryEntity.getCno()  )
                 .cname( categoryEntity.getCname() )
                 .build();
     }
 }
+
 
 
 

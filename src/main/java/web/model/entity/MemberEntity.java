@@ -7,15 +7,12 @@ import web.model.dto.MemberDto;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "member")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Entity @Table(name = "member")
+@Data @Builder
+@NoArgsConstructor @AllArgsConstructor
 public class MemberEntity extends BaseTime {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue( strategy = GenerationType.IDENTITY)// 기본키
     private int mno;
     private String memail;
     private String mpwd;
@@ -32,12 +29,13 @@ public class MemberEntity extends BaseTime {
     @ToString.Exclude @Builder.Default
     private List<ReplyEntity> replyEntityList = new ArrayList<>();
 
+
+    // entity --> dto
     public MemberDto toDto(){
         return MemberDto.builder()
-                .mno(this.mno)
-                .memail(this.memail)
-                .mname(this.mname)
-                .createDateTime(this.getCreateDateTime())
+                .mno( mno )
+                .memail( memail )
+                .mname( mname )
                 .build();
     }
 }

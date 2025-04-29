@@ -1,31 +1,22 @@
 package web.model.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import web.model.entity.MemberEntity;
 
-import java.time.LocalDateTime;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@Data @Builder
+@NoArgsConstructor@AllArgsConstructor
 public class MemberDto {
     private int mno;
     private String memail;
     private String mpwd;
     private String mname;
-
-    private LocalDateTime createDateTime;
-
+    // dto --> entity
     public MemberEntity toEntity(){
         return MemberEntity.builder()
-                .mno(this.mno)
-                .memail(this.memail)
-                .mpwd(this.mpwd)
-                .mname(this.mname)
+                .mno( mno )
+                .memail( memail )
+                .mpwd( mpwd )
+                .mname( mname )
                 .build();
     }
 }

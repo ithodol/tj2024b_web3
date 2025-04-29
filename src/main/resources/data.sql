@@ -1,25 +1,25 @@
 -- Member 테이블 (10명) - 비밀번호는 해시, 주석에는 원문 표시
-INSERT INTO member (memail, mpwd, mname, createDateTime, updateDateTime) VALUES
-('user1@example.com', '$2a$10$1cGQPRH9HldlI/mVJv2D1.G6vv/5M5r6iNf2NBkxUnWXOQ69a7xEi', '김회원', NOW(), NOW()), -- 비밀번호: 1234
-('user2@example.com', '$2a$10$kYy52uJydVnK6LzF4XFiTuZk2pEEj5myHLT1cc8fhWQY57GmbBtUe', '이사용', NOW(), NOW()), -- 비밀번호: 5678
-('user3@example.com', '$2a$10$u0kqCnMphcbNTvF1PG8TvuVqu3dnDwUCrKpP44LOIjFDXaQ1xUjVW', '박지성', NOW(), NOW()), -- 비밀번호: qwer1234
-('user4@example.com', '$2a$10$zm/TIXtD5IPNTk7IJgdUpuYxKRLSuLoS8XldD0AL/CtXboq4ik90i', '손흥민', NOW(), NOW()), -- 비밀번호: son2024
-('user5@example.com', '$2a$10$OB/DjohflKep6YQLMP9p3uTxHzCJ.NPPf2yoEv8JUSNFKMXdtPb0G', '정우성', NOW(), NOW()), -- 비밀번호: pass123
-('user6@example.com', '$2a$10$Y0P1NedKNF6Y9Ow.0R7nsOexMVYwZekUabgASLZc9wEnpDGOa6/2u', '한예슬', NOW(), NOW()), -- 비밀번호: welcome1
-('user7@example.com', '$2a$10$ly9dThUZCgtdxLMI.KZWyOMGlS3GyGnVAGaMvC8r47n0RgR4IoBVK', '유재석', NOW(), NOW()), -- 비밀번호: yoo2025
-('user8@example.com', '$2a$10$tuMNjkuzcwZa5qG4nFqJ/OByRvZZ12.TlTz0zn6gXG8c.70HvIRFO', '이지은', NOW(), NOW()), -- 비밀번호: iu9988
-('user9@example.com', '$2a$10$G/FZ6AcLRNm0M1sLeSwj2.tRSZzAqg6eA44Q1eL1F5loDbM2mlUVe', '장원영', NOW(), NOW()), -- 비밀번호: wonyoung
-('user10@example.com', '$2a$10$8fYl3tUcx1EoF0uPvR/B8uxBHZff8vdFJUpaJ/EebDQMr0zmr3p7W', '이민호', NOW(), NOW()); -- 비밀번호: lee1122
-
+-- 모든 회원의 원본 비밀번호는 '1234' (BCrypt 해시 포함)
+INSERT INTO member (memail, mpwd, mname, create_at, update_at) VALUES
+('user1@example.com',  '$2a$10$ces9K/Dj7MUvZT4z5Z53yent9GqwfzsEhGuPNA9Ct6NzXq6ZHEXw.', '김하나', NOW(), NOW()), -- 비밀번호: 1234
+('user2@example.com',  '$2a$10$ces9K/Dj7MUvZT4z5Z53yent9GqwfzsEhGuPNA9Ct6NzXq6ZHEXw.', '이둘',   NOW(), NOW()), -- 비밀번호: 1234
+('user3@example.com',  '$2a$10$ces9K/Dj7MUvZT4z5Z53yent9GqwfzsEhGuPNA9Ct6NzXq6ZHEXw.', '박셋',   NOW(), NOW()), -- 비밀번호: 1234
+('user4@example.com',  '$2a$10$ces9K/Dj7MUvZT4z5Z53yent9GqwfzsEhGuPNA9Ct6NzXq6ZHEXw.', '최넷',   NOW(), NOW()), -- 비밀번호: 1234
+('user5@example.com',  '$2a$10$ces9K/Dj7MUvZT4z5Z53yent9GqwfzsEhGuPNA9Ct6NzXq6ZHEXw.', '정다섯', NOW(), NOW()), -- 비밀번호: 1234
+('user6@example.com',  '$2a$10$ces9K/Dj7MUvZT4z5Z53yent9GqwfzsEhGuPNA9Ct6NzXq6ZHEXw.', '한여섯', NOW(), NOW()), -- 비밀번호: 1234
+('user7@example.com',  '$2a$10$ces9K/Dj7MUvZT4z5Z53yent9GqwfzsEhGuPNA9Ct6NzXq6ZHEXw.', '노일곱', NOW(), NOW()), -- 비밀번호: 1234
+('user8@example.com',  '$2a$10$ces9K/Dj7MUvZT4z5Z53yent9GqwfzsEhGuPNA9Ct6NzXq6ZHEXw.', '오여덟', NOW(), NOW()), -- 비밀번호: 1234
+('user9@example.com',  '$2a$10$ces9K/Dj7MUvZT4z5Z53yent9GqwfzsEhGuPNA9Ct6NzXq6ZHEXw.', '장아홉', NOW(), NOW()), -- 비밀번호: 1234
+('user10@example.com', '$2a$10$ces9K/Dj7MUvZT4z5Z53yent9GqwfzsEhGuPNA9Ct6NzXq6ZHEXw.', '윤열',   NOW(), NOW()); -- 비밀번호: 1234
 
 -- Category 테이블 (3개)
-INSERT INTO category (cname, createDateTime, updateDateTime) VALUES
+INSERT INTO category (cname, create_at, update_at) VALUES
 ('전자제품', NOW(), NOW()),
 ('도서', NOW(), NOW()),
 ('의류', NOW(), NOW());
 
 -- Product 테이블 (30개)
-INSERT INTO product (pname, pcontent, pprice, pview, mno, cno, createDateTime, updateDateTime) VALUES
+INSERT INTO product (pname, pcontent, pprice, pview, mno, cno, create_at, update_at) VALUES
 ('노트북 A', '성능 좋은 노트북 A', 1300000, 5, 1, 1, NOW(), NOW()),
 ('노트북 B', '성능 좋은 노트북 B', 1450000, 3, 2, 1, NOW(), NOW()),
 ('무선 이어폰', '편리한 무선 이어폰', 120000, 10, 3, 1, NOW(), NOW()),

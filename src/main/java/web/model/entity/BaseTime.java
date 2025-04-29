@@ -13,11 +13,11 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class) // 해당 클래스를 JPA 감사 활성화
 @Getter
 public class BaseTime {
-    // 생성 날짜시간
-    @CreatedDate
-    private LocalDateTime createDateTime;
+    // 1. 생성날짜
+    @CreatedDate // 엔티티의 생성 날짜/시간 주입
+    private LocalDateTime createAt;
 
-    // 수정 날짜시간
-    @LastModifiedDate
-    private LocalDateTime updateDateTime;
+    // 2. 수정날짜
+    @LastModifiedDate // 엔티티의 수정 날짜/시간 주입
+    private LocalDateTime updateAt;
 }

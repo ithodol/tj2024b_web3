@@ -3,9 +3,8 @@ package web.model.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import web.model.entity.CategoryEntity;
-import web.model.entity.ImgEntity;
 
 @Repository
-public interface ImgRepository
-        extends JpaRepository<ImgEntity,Long> {
+public interface CategoryEntityRepository
+        extends JpaRepository<CategoryEntity,Long> {
 }

@@ -6,6 +6,6 @@ import web.model.entity.ProductEntity;
 import web.model.entity.ReplyEntity;
 
 @Repository
-public interface ReplyRepository
+public interface ReplyEntityRepository
         extends JpaRepository<ReplyEntity,Long> {
 }

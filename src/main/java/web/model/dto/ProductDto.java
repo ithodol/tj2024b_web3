@@ -20,8 +20,6 @@ public class ProductDto {
     private List<MultipartFile> files = new ArrayList<>(); // - 업로드할 제품이미지들
     private long cno; // - 제품카테고리 번호
 
-
-
     // * toEntity : 제품 등록시 사용
     public ProductEntity toEntity(){
         return ProductEntity.builder()
@@ -31,35 +29,35 @@ public class ProductDto {
                 // cno 대신 CategoryEntity 넣기
                 // mno 대신 MemberEntity 넣기
                 .build();
-
     }
 
-    // * 제품 조회할 때 필요한 필드
+    // * 제품 조회할떄 필요한 필드
     private long pno; // 제품 번호
     private int pview; // 제품 조회수
-    private String memail; // 제품 등록한 회원 아이디
+    private String memail; // 제품 등록한 회원아이디
     private String cname; // 제품 카테고리명
-    private List<String> imges = new ArrayList<>(); // 이미지들
+    private List< String > images = new ArrayList<>(); // 이미지들
 
-    public static  ProductDto toDto(ProductEntity productEntity){
+    // * toDto  : 제품전체조회 , 제품개별 조회 사용.
+    public static ProductDto toDto( ProductEntity productEntity ){
         return ProductDto.builder()
-                .pname(productEntity.getPname())
-                .pcontent(productEntity.getPcontent())
-                .pprice(productEntity.getPprice())
-                .pno(productEntity.getPno())
-                .pview(productEntity.getPview())
-                .memail(productEntity.getMemberEntity().getMemail()) // 작성자 회원 아이디
-                .cno(productEntity.getCategoryEntity().getCno()) // 카테고리 번호
-                .cname(productEntity.getCategoryEntity().getCname()) // 카테고리 이름
-                .imges( // 제품의 이미지들
+                .pname( productEntity.getPname() )
+                .pcontent( productEntity.getPcontent() )
+                .pprice( productEntity.getPprice() )
+                .pno( productEntity.getPno() )
+                .pview( productEntity.getPview() )
+                .memail( productEntity.getMemberEntity().getMemail() ) // 등록자 회원 아이디 조회
+                .cno( productEntity.getCategoryEntity().getCno() ) // 카테고리 번호 조회
+                .cname( productEntity.getCategoryEntity().getCname() ) // 카테고리 이름 조회
+                .images( // 제품의 이미지들을 조회
                         productEntity.getImgEntityList().stream()
-                                .map(ImgEntity :: getIname)
+                                .map(ImgEntity :: getIname )
                                 .collect(Collectors.toList())
                 )
                 .build();
     }
-
 }
+
 
 
 
